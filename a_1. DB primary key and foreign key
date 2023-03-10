@@ -29,6 +29,10 @@ constraint FK_table2 foreign key (userid) references table1(userid)
 왜래키는 다음과 같이
 constraint 규약명 foreign key (현재테이블의 컬럼명) references 부모테이블(현재테이블의 컬럼명과 동일한 부모테이블의 컬럼명)
 
+왜래키가 적용된 테이블에서 삭제하고 싶으면,
+*자식테이블 먼저 삭제 -> 부모테이블 삭제
+순으로 진행되어야 한다.
+
 R : select 컬럼 from 테이블 where 조건
 I : insert into 테이블(컬럼명) values(컬럼값)
 U : update 테이블 set 컬럼명=컬럼값 where 조건
