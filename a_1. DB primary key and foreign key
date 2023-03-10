@@ -1,0 +1,35 @@
+제약조건 : constraint
+
+기본키 : primary key
+
+외래키 :  다른 테이블의 기본키를 참조하는 속성 - foreign key
+
+외래키를 사용하려면 두가지 속성이 필수이다.
+1. 테이블은 2개이고, 각 테이블을 연결할 컬럼은 두테이블 모두 기본키여야 한다.
+2. 자식테이블은 기본키 설정한 뒤, 왜래키도 설정해준다.
+
+부모테이블 생성 문
+create table table1(
+	userid varchar(20),
+	useriod varchar(20),
+	promotion number,
+constraint PK_table1 primary key (userid)
+);
+
+자식테이블 생성 문
+create table table2(
+	userid varchar(20),
+	usernid varchar(20),
+	yearweek(8),
+	vmb number,
+constraint PK_table2 primary key (userid, usernid, yearweek),
+constraint FK_table2 foreign key (userid) references table1(userid)
+);
+
+왜래키는 다음과 같이
+constraint 규약명 foreign key (현재테이블의 컬럼명) references 부모테이블(현재테이블의 컬럼명과 동일한 부모테이블의 컬럼명)
+
+R : select 컬럼 from 테이블 where 조건
+I : insert into 테이블(컬럼명) values(컬럼값)
+U : update 테이블 set 컬럼명=컬럼값 where 조건
+D : delete from 테이블 where 조건
